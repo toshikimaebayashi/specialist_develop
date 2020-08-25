@@ -1,0 +1,101 @@
+.mypage__header {
+  height: 500px;
+  position: relative;
+  z-index: 0;
+  background: #111;
+
+  &::before {
+    display: block;
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+  }
+
+  .mypage__header__imgbg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
+
+  .mypage__header__imgbg-img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -9999px;
+    bottom: -9999px;
+    margin: auto 0;
+    width: 100%;
+    transform: none;
+  }
+}
+
+.mypage__header__name {
+  background: #111;
+  color: #fff;
+
+  .col-12 {
+    text-indent: 14rem;
+    font-size: 1.6rem;
+    padding-top: 1rem;
+  }
+}
+
+.mypage__main {
+  margin-top: -170px;
+  margin-bottom: 100px;
+
+  .mypage__profile__edit {
+    margin-bottom: 30px;
+
+    a.btn {
+      color: #fff;
+    }
+  }
+  .mypage__usericon-img {
+    border-radius: 50%;
+    border: 6px solid #fff;
+    margin-bottom: 20px;
+    width: 200px;
+  }
+
+  h3 {
+    font-size: 16px;
+    margin-top: 30px;
+    border-bottom: 2px solid #7d0000;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-feature-settings: "palt";
+  }
+}
+
+#mypage__usernote {
+  padding-top: 70px;
+  padding-bottom: 10px !important;
+}
+
+@media screen and (max-width: 751px) {
+  .mypage__header {
+    height: 180px;
+  }
+  .mypage__main {
+    margin-top: -130px;
+    .mypage__usericon-img {
+      width: 160px;
+      height: 160px;
+    }
+  }
+
+  .mypage__header__name .col-12 {
+    font-size: 17px;
+  }
+}

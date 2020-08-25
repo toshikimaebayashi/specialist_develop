@@ -1,0 +1,35 @@
+.unit__section__title {
+  text-align: center;
+  font-feature-settings: "palt";
+  margin-bottom: 35px;
+  margin-top: 30px;
+  font-size: 32px;
+}
+
+.list-group {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+
+  &:first-child {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+  }
+
+  a,
+  a:visited {
+    color: #c00;
+  }
+}

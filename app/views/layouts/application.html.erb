@@ -4,12 +4,53 @@
     <title>SpecialistDevelop</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+  <header class="pc">
+    <div class="bs-component">
+      <div class="containar">
+        <nav class="navbar navbar-expand-lg"> 
+        <div class="bg-wrapper">
+          <a class="navbar-brand" href="/">AR</a> 
+          <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active"> <a class="nav-link" href="/">トップ </a> </li>
+              <li class="nav-item"> <a class="nav-link" href="/unit/basicstrategy/?mode=basic">基礎知識</a> </li>
+              <li class="nav-item"> <a class="nav-link" href="/usernotes">ユーザーノート</a> </li>
+              <li class="nav-item"> <a class="nav-link" href="/projects-lists">プロジェクト</a> </li>
+              <li class="nav-item"> <a class="nav-link" href="/mypage">マイページ</a> </li>
+              <li class="nav-item"> <a class="nav-link" href="/contact">お問い合わせ</a> </li>
+            </ul> 
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#search">
+              <i class="fas fa-search"></i>
+            </button> 
+          </div>
+        </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <header class="sp header-sp">
+      <div id="nav-drawer"> 
+        <input id="nav-input" type="checkbox" class="nav-unshown"> 
+        <label id="nav-open" for="nav-input"><span></span></label> 
+        <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+        <div id="nav-content"> 
+          <label id="nav-close-btn" for="nav-input"><span></span></label>
+          <ul class="header-list">
+            
+            <li class="listItem"><a href="/">TOP</a></li>
+            <li class="listItem"><a href="/">基礎知識</a></li>
+            <li class="listItem"><a href="/">ユーザーノート</a></li>
+            <li class="listItem"><a href="/">マイページ</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+  <%= yield %>
   </body>
 </html>

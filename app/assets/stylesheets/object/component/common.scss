@@ -1,0 +1,132 @@
+@import "../../extention/color";
+
+.bg-style {
+  background-position: center center;
+  background-repeat: no-repeat;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.breadcrumb-list {
+  width: 1020px;
+  margin: 10px auto 45px;
+
+  .breadcrumbItem {
+    font-size: 12px;
+    padding: 0 5px;
+    display: inline-block;
+
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+  .breadcrumb__arrow {
+    line-height: 12px;
+  }
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container {
+  max-width: 1060px;
+}
+
+.col-3 {
+  -ms-flex: 0 0 25%;
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-lg-4 {
+  -ms-flex: 0 0 33.333333%;
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+}
+
+.col-9 {
+  -ms-flex: 0 0 75%;
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.col-md-10 {
+  flex: 0 0 83.333333%;
+  max-width: 83.333333%;
+}
+
+.col-md-2 {
+  -ms-flex: 0 0 16.666667%;
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+}
+
+.col-sm-8 {
+  flex: 0 0 66.666667%;
+  max-width: 66.666667%;
+}
+
+.section-black {
+  background: #222;
+  color: #fff;
+  overflow: hidden;
+  padding-bottom: 90px;
+}
+
+.top-page-wrapper {
+  background: #222;
+  color: #fff;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 480px) {
+  /* 480px以下に適用されるCSS（スマホ用） */
+
+  .col-lg-4 {
+    flex: auto;
+    max-width: 100%;
+  }
+
+  .col-5 {
+    -ms-flex: 0 0 41.666667%;
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
+  }
+
+  .col-md-10 {
+    flex: 0 0 83.333333%;
+    max-width: 100%;
+  }
+
+  .col-7 {
+    -ms-flex: 0 0 58.333333%;
+    flex: 0 0 58.333333%;
+    max-width: 58.333333%;
+  }
+}
