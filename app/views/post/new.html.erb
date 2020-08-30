@@ -1,13 +1,38 @@
+<%= form_with url: "/post/postimage_upload", local: true, data: { persist: 'garlic' } do |f| %>
+  <div class="contact-box">
+    <span class="itemName">画像をアップロードする</span> 
+    <%= f.file_field :imageurl %>
+    <%= f.submit %>
+  </div>
+<% end %> 
 
+<% if @postimages != nil %>
+  <% @postimages.each do |postimage| %>
+    <img src="<%= postimage.imageurl %>" class="post-image">
+    <input id="copyTarget<%= postimage.id %>" type="text" value="![post](<%= postimage.imageurl %>)" readonly>
+    <button onclick="copyToClipboard(<%= postimage.id %>)">はるで</button>
+  <% end %>
+<% end %>
 
+<%= form_with url: "/post/create", local: true, data: { persist: 'garlic' } do |f| %>
+  <p>タイトル</p> 
+  <%= f.text_field :title %> 
+  <p>ボディ</p>
+  <%= f.text_area :text, class: "materialize-textarea", id: "md-textarea" %>
+ 
+  <%= f.check_box :preview ,{checked: true}, "true", "false" %><p>プレビューモード</p>
+  
+  <%= f.submit %>
+<% end %> 
 
-<%= form_tag("create") do %>
-    <div class="form">
-      <div class="form-body">
-        <p>タイトル</p> <textarea name="title"></textarea>
-        <p>ボディ</p> <textarea name="text" rows="40" cols="120"></textarea>
-        
-        <input type="submit" value="投稿"> 
-      </div>
-    </div>
-    <% end %>
+<script>
+  function copyToClipboard(num) {   
+    var copyTarget = document.getElementById("copyTarget" + num);
+    copyTarget.select();
+    document.execCommand("Copy");
+    alert("コピーできました！ : " + copyTarget.value);
+  }
+</script>
+
+   
+

@@ -1,0 +1,19 @@
+<div class="sub">
+  <div class="commonBox-container">
+    <h2 class="contactTitle">プロフィール/ 自己理念　編集画面</h2>
+    <%= form_tag("/profile/update/text", {:multipart => true }) do  %>
+      
+      <div class="contact-box">
+        <span class="itemName">プロフィール</span> 
+        <div class="text-wrap"><textarea name="profile" rows="20"></textarea></div>
+      </div>
+      <div class="contact-box">
+        <span class="itemName">自己理念</span> 
+        <div class="text-wrap"><textarea name="selfideal" rows="4"></textarea></div>
+      </div>
+      <div class="submit-wrap">
+        <input type="submit" value="保存"> 
+      </div>
+      <% end %>
+  </div>
+</div>

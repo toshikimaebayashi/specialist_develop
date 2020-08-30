@@ -1,0 +1,39 @@
+<div class="data-table">
+  <p class="tableTitle">基礎知識のデータ一覧</p>
+  <%= link_to '新規投稿', "/admin/basiccategory/new" %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id名</th>
+        <th>カテゴリー名</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @basic_knowledge_categories.each do |category| %>
+        <tr>
+          <td>
+            <%= category.id %>
+          </td>
+          <td>
+            <%= category.name %>
+          </td>
+          <td>
+            <%= link_to '消去', "/admin/basiccategory/#{category.id}/destroy" , {method: "post"} %>
+          </td>
+          <td>
+            <%= link_to '変更', "/admin/basiccategory/#{category.id}/edit" %>
+          </td>
+          <td>
+            <%= link_to 'URLを追加', "/admin/basicknowleadge/#{category.id}/new" %>
+          </td>
+          <td>
+            <%= link_to 'URL一覧', "/admin/basicknowleadge/#{category.id}/url" %>
+          </td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

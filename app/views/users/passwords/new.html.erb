@@ -1,0 +1,16 @@
+<div class="sub">
+  <div class="commonBox-container">
+    <h2 class="contactTitle">パスワードを忘れた方</h2>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
+      <div class="contact-box">
+        <span class ="itemName"><%= f.label :メールアドレス %></span><br />
+        <div class="text-wrap"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
+      </div>
+      <div class="submit-wrap">
+        <%= f.submit "パスワードをリセットする" %>
+      </div>
+    <% end %>
+    <%= render "users/shared/links" %>
+  </div>
+</div>

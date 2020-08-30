@@ -1,0 +1,14 @@
+<div class="sub">
+  <div class="commonBox-container">
+    <h2 class="contactTitle">プロフィール情編集画面</h2>
+    <%= form_tag("/profile/update/iconimage", {:multipart => true }) do  %>
+      <div class="contact-box">
+        <span class="itemName">プロフィール画像</span> 
+        <div class="text-wrap"><input type="file" name="iconimageurl" ></div>
+      </div>
+      <div class="submit-wrap">
+        <input type="submit" value="保存"> 
+      </div>
+    <% end %>
+  </div>
+</div>

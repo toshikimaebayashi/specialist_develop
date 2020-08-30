@@ -1,13 +1,19 @@
 <div class="usernote">
 <div class="title-design">USERNOTE</div>
-<div class="usernote__cover"> <img src="https://member.ard-online.jp/user_upload_cover/545_20200730-154248.png"> </div>
+<div class="usernote__cover"> <img src="<%= @post.user.coverimageurl %>"> </div>
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-10 offset-md-1">
       <div class="usernote__header">
         <div class="row">
-          <div class="col-5 col-sm-4 col-md-2"> <a href="/user/?id=545"><img src="http://member.ard-online.jp/user_upload/545_20200730-154109.JPG"></a> </div>
-          <div class="col-7 col-sm-8 col-md-10"> <span class="usernote__header-date">2020.08.15</span><span class="usernote__header-meta"></span><br> 外国人という概念がない社会を作る<br><span class="usernote__header-displayname">譲原 裕之 </span> <a href="https://twitter.com/https://twitter.com/Talkativer___" target="_blank"><i class="fab fa-twitter-square"></i></a> <a href="https://www.facebook.com/hiroyuki.yuzurihara.5" target="_blank"><i class="fab fa-facebook-square"></i></a> </div>
+          <div class="col-5 col-sm-4 col-md-2"> 
+            <%= link_to "/user/#{@post.user.id}" do %>
+              <img src="<%= @post.user.iconimageurl %>">
+            <% end %>
+          </div>
+          <div class="col-7 col-sm-8 col-md-10"> 
+            <span class="usernote__header-date">2020.08.15</span>
+            <br> <%= @post.user.selfideal %><br><span class="usernote__header-displayname"><%= @post.user.name %> </span>  </div>
         </div>
       </div>
       <!-- .usernote__header -->
@@ -16,23 +22,7 @@
         <p> </p>
         <%= markdown(@post.text).html_safe %>
         <br>
-        <div class="" dir="auto">
-          <div id="jsc_c_9c" class="ecm0bbzt hv4rvrfc ihqw7lf3 dati1w0a" data-ad-comet-preview="message" data-ad-preview="message">
-            <div class="j83agx80 cbu4d94t ew0dbk1b irj2b8pg">
-              <div class="qzhwtbm6 knvmm38d">
-                <div class="kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql ii04i59q">
-                  <div dir="auto">転職を本気で喜びオファーする価値</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <p class="p2"><a href="https://note.com/talkativer/n/n18b163aec601">https://note.com/talkativer/n/n18b163aec601</a></p>
-        <p class="p1">▶︎Twitter『ブログをより簡略化したもの』<br> <span class="s1"><a href="https://twitter.com/Talkativer___">https://twitter.com/Talkativer___</a></span></p>
-        <p class="p1">▶︎Facebook『ブログと同じ』<br> <span class="s1"><a href="https://www.facebook.com/hiroyuki.yuzurihara.5/">https://www.facebook.com/hiroyuki.yuzurihara.5/</a></span></p>
-        <p></p>
       </div>
-      
     </div>
   </div>
 </div>
@@ -42,16 +32,23 @@
       <div class="col-12">
         <h3 class="usernote__recommend-header">新着ユーザーノート</h3>
       </div>
+      <% @recommend_posts.each do |recommend_post| %>
       <div class="col-lg-4 col-md-6">
         <div class="row">
-          <div class="col-3"> <a href="https://member.ard-online.jp/usernote/%e9%a1%a7%e5%ae%a2%e7%8d%b2%e5%be%97%e5%8d%98%e4%be%a1-4/"><img src="http://member.ard-online.jp/user_upload/3565_20200714-103856.jpeg"></a> </div>
+          <div class="col-3"> 
+            <%= link_to "/user/#{recommend_post.user.id}" do %>
+              <img src="<%= recommend_post.user.iconimageurl %>">
+            <% end %>
+          </div>
           <div class="col-9">
-            <div class="leader__indexlist__date">20.08.16 松本 幸大</div>
-            <div class="leader__indexlist__title"><a href="https://member.ard-online.jp/usernote/%e9%a1%a7%e5%ae%a2%e7%8d%b2%e5%be%97%e5%8d%98%e4%be%a1-4/">顧客獲得単価</a></div>
+            <div class="leader__indexlist__date">20.08.16 <%= recommend_post.user.name %></div>
+            <div class="leader__indexlist__title">
+              <%= link_to "#{recommend_post.title}", "/post/#{recommend_post.id}" %>
+            </div>
           </div>
         </div>
       </div>
-      
+      <% end %>
     </div> 
     </div>
     <!-- .row -->

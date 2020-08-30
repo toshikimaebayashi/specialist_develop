@@ -1,0 +1,24 @@
+<div class="data-table">
+  <p class="tableTitle">URLデータ</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>url</th>
+       <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @basic_knowledges.each do |knowledge| %>
+        <tr>
+          <td>
+            <%= knowledge.url %>
+          </td>
+          <td>
+            <%= link_to '消去', "/admin/basicknowledge/#{knowledge.id}/destroy" , {method: "post"} %>
+          </td>
+          
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

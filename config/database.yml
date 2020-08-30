@@ -78,6 +78,8 @@ test:
 #
 production:
   <<: *default
+  pool: 5
+  encoding: unicode
   database: specialist_develop_production
   username: specialist_develop
   password: <%= ENV['SPECIALIST_DEVELOP_DATABASE_PASSWORD'] %>

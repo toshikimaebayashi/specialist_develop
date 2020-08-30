@@ -1,0 +1,30 @@
+<div class="usernote">
+<div class="title-design">USERNOTE</div>
+<div class="usernote__cover"> <img src="<%= @user.coverimageurl %>"> </div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 offset-md-1">
+      <div class="usernote__header">
+        <div class="row">
+          <div class="col-5 col-sm-4 col-md-2"> 
+            <%= link_to "/user/#{@user.id}" do %>
+              <img src="<%= @user.iconimageurl %>">
+            <% end %>
+          </div>
+          <div class="col-7 col-sm-8 col-md-10"> 
+            <span class="usernote__header-date">2020.08.15</span>
+            <br> <%= @user.selfideal %><br><span class="usernote__header-displayname"><%= @user.name %> </span>  </div>
+        </div>
+      </div>
+      <!-- .usernote__header -->
+      <div class="usernote__body">
+        <h1 class="page-header"><%= @preview_title %></h1>
+        <p> </p>
+        <%= markdown(@preview_text).html_safe %>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

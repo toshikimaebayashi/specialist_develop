@@ -1,0 +1,15 @@
+<div class="sub">
+  <div class="commonBox-container">
+    <h2 class="contactTitle">カバー画像編集画面</h2>
+    <%= form_tag("/profile/update/coverimage", {:multipart => true }) do %>
+      <div class="contact-box">
+        <span class="itemName">カバー画像</span> 
+        <div class="text-wrap"><input type="file" name="coverimageurl" ></div>
+      </div>
+      
+      <div class="submit-wrap">
+        <input type="submit" value="保存"> 
+      </div>
+      <% end %>
+  </div>
+</div>

@@ -1,1 +1,145 @@
 @import "../../extention/color";
+
+.commonBox-container {
+  line-height: 1.6;
+  background: $color-white;
+  padding: 20px;
+  margin: 130px auto;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 7px;
+
+  a {
+    color: #900;
+  }
+
+  &.-used {
+    width: 87%;
+    padding: 20px;
+
+    .usedCoupon-text {
+      p {
+        margin: 10px 0 15px;
+        text-align: center;
+        color: $color-brawn;
+        font-weight: normal;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .couponImage {
+    height: 360px;
+    position: relative;
+
+    .topCoupon-flag {
+      background: $color-white;
+      position: absolute;
+      padding: 5px 12px;
+      border-radius: 5px;
+      font-size: 15px;
+      color: $color-orange;
+      font-weight: bold;
+      border: 2px solid;
+      right: 7px;
+      bottom: 7px;
+    }
+  }
+
+  .contactTitle {
+    font-size: 32px;
+    text-align: center;
+    color: $color-brawn;
+    margin-bottom: 20px;
+  }
+
+  .contact-box {
+    margin-bottom: 15px;
+
+    .itemName {
+      font-size: 14px;
+
+      a {
+        text-decoration: underline;
+      }
+    }
+
+    .text-wrap {
+      margin-top: 3px;
+
+      input {
+        width: 100%;
+        height: 48px;
+        max-width: 400px;
+        padding: 8px;
+        font-size: 17px;
+        background: #f5f5f5;
+        border-radius: 3px;
+        border: none;
+        appearance: none;
+        -webkit-appearance: none;
+      }
+
+      textarea {
+        width: 93%;
+        font-size: 13px;
+        padding: 7px;
+        border: none;
+        -webkit-border-radius: 0;
+        border-radius: 0;
+        background: #f5f5f5;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+      }
+    }
+  }
+
+  .submit-wrap {
+    width: 100%;
+    margin: 40px auto 10px;
+
+    input[type="submit"],
+    .returnTop,
+    a {
+      border: none;
+      display: block;
+      width: 98%;
+      text-align: center;
+      padding: 15px;
+      border-radius: 4px;
+      background-color: #900;
+      border-color: #900;
+      color: $color-white;
+      font-weight: bold;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+      margin: 0 auto;
+      font-size: 16px;
+      letter-spacing: 2px;
+    }
+
+    &.-other {
+      margin: 20px auto;
+
+      a {
+        background: none;
+        border: none;
+        color: #900;
+        width: 85%;
+      }
+    }
+  }
+
+  .explanation-box {
+    margin: 10px;
+
+    p {
+      font-size: 13px;
+      margin: 15px 0;
+      line-height: 1.9;
+    }
+  }
+}

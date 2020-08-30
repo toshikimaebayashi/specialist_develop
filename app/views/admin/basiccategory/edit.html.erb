@@ -1,0 +1,10 @@
+<div class="container">
+  <%= form_tag("/admin/basiccategory/#{@basic_knowledge_category.id}/update") do %>
+    <div class="form">
+      <div class="form-body">
+        <p>カテゴリ名</p> <textarea name="name"></textarea>
+        <input type="submit" value="投稿"> 
+      </div>
+    </div>
+    <% end %>
+</div>

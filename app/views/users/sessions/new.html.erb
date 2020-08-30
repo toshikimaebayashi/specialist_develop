@@ -1,0 +1,25 @@
+<div class="sub">
+  <div class="commonBox-container">
+    <h2 class="contactTitle">ログイン</h2>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="contact-box">
+        <span class ="itemName"><%= f.label :メールアドレス %></span><br />
+        <div class="text-wrap"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
+      </div>
+      <div class="contact-box">
+        <span class ="itemName"><%= f.label :パスワード %></span><br />
+        <div class="text-wrap"><%= f.password_field :password, autocomplete: "current-password" %></div>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="contact-box">
+          <%= f.check_box :remember_me %>
+          <span class ="itemName"><%= f.label :パスワードを覚えておく %></span>
+        </div>
+      <% end %>
+      <div class="submit-wrap">
+        <%= f.submit "ログイン" %>
+      </div>
+      <%= render "users/shared/links" %>
+    <% end %>
+  </div>
+</div>

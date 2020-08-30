@@ -1,0 +1,12 @@
+<div class="container">
+  <%= form_tag("create") do %>
+    <div class="form">
+      <div class="form-body">
+        <p>URLを貼り付けてください</p> 
+        <textarea name="url"></textarea>
+        <input type="hidden" name="category_id" value="<%= @basic_knowledge_category.id %>"> 
+        <input type="submit" value="投稿"> 
+      </div>
+    </div>
+    <% end %>
+</div>
