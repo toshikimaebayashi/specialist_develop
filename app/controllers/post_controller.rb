@@ -24,20 +24,41 @@ class PostController < User::ApplicationController
       redirect_to('/preview')
 
     else post_params[:preview] == "fasle"
-      @post = Post.new(
-        title: post_params[:title], 
-        text: post_params[:text], 
-        user_id: current_user.id
-      )
-      session[:preview_title].clear
-      session[:preview_text].clear
+
+      # 下書きとして保存しない場合＝本番に反映させたい場合
+      if post_params[:draft] == "fasle"
+        @post = Post.new(
+          title: post_params[:title], 
+          text: post_params[:text], 
+          user_id: current_user.id,
+          draft: "fasle"
+        )
+        session[:preview_title].clear
+        session[:preview_text].clear
       
-      @post.save
-      redirect_to('/')
+        @post.save
+        redirect_to('/')
+
+      elsif post_params[:draft] == "true"
+        @post = Post.new(
+          title: post_params[:title], 
+          text: post_params[:text], 
+          user_id: current_user.id,
+          draft: "true"
+        )
+        session[:preview_title].clear
+        session[:preview_text].clear
+
+        @post.save
+        redirect_to('/profile')
+
+      end
     end
   end
 
   def edit
+    @post = Post.find_by(id: params[:id])
+    @postimages = PostImage.where(user_id: current_user.id)
   end
 
   def preview
@@ -57,14 +78,49 @@ class PostController < User::ApplicationController
   end
 
   def update
+    if post_params[:preview] == "true"
+      session[:preview_title] = post_params[:title]
+      session[:preview_text] = post_params[:text]
+      redirect_to('/preview')
+
+    else post_params[:preview] == "fasle"
+      # 下書きとして保存しない場合＝本番に反映させたい場合
+      if post_params[:draft] == "fasle"
+
+        @post = Post.find_by(id: params[:id]).update(
+          title: post_params[:title], 
+          text: post_params[:text], 
+          user_id: current_user.id,
+          draft: "fasle"
+        )
+        session[:preview_title].clear
+        session[:preview_text].clear
+        redirect_to('/profile')
+
+      elsif post_params[:draft] == "true"
+        @post = Post.find_by(id: params[:id]).update(
+          title: post_params[:title], 
+          text: post_params[:text], 
+          user_id: current_user.id,
+          draft: "true"
+        )
+        session[:preview_title].clear
+        session[:preview_text].clear
+        redirect_to('/profile')
+
+      end
+    end
   end
 
   def destroy
+    @post = Post.find_by(id: params[:id])
+    @post.destroy
+    redirect_to('/profile')
   end
 
   private
   def post_params
-    params.permit(:title, :text, :preview)
+    params.permit(:title, :text, :preview, :draft)
   end
 
   def postimage_params

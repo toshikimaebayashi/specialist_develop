@@ -1,3 +1,6 @@
+
+
+
 <div class="container">
 
 <div class="image-list">
@@ -26,9 +29,9 @@
 <%= link_to 'マークダウンについて', "https://qiita.com/Qiita/items/c686397e4a0f4f11683d" %>
 <%= form_with url: "/post/create", local: true, data: { persist: 'garlic' } do |f| %>
   <p>タイトル</p> 
-  <%= f.text_field :title %> 
+  <%= f.text_field :title , :value => @post.title %> %> 
   <p>ボディ</p>
-  <%= f.text_area :text, class: "materialize-textarea", id: "md-textarea" %>
+  <%= f.text_area :text, class: "materialize-textarea", id: "md-textarea" , :value => @post.text %>
  
   プレビューモード<%= f.check_box :preview ,{checked: true}, "true", "false" %>
   下書きとして保存する<%= f.check_box :draft ,{checked: true}, "true", "false" %>

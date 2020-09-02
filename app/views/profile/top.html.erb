@@ -35,27 +35,39 @@
       <h3>プロフィール</h3> <%= @user.profile %></div>
     <div class="col-sm-4 mypage__philosophy">
       <h3>自己理念</h3>
-      <h4><%= @user.selfideal %></div>
+      <h4><%= @user.selfideal %></h4>
+    </div>
+    <p>下書き中の記事</p>
+    <% @draft_posts.each do |post| %>
+      <%= link_to "#{post.title}", "/post/#{post.id}/edit" %>
+    <% end %>
   </div>
 </div>
 <section id="mypage__usernote" class="section-black bs-docs-section">
   <div class="container">
     <h3>ユーザーノート</h3>
-    <p><a href="http://member.ard-online.jp/wp-admin/edit.php?post_type=usernote" target="_blank" class="btn btn-primary">今スグユーザーノートを書く</a></p>
+    
+    <p><%= link_to "今スグユーザーノートを書く", "/post/new", { :class => "btn btn-primary"} %></p>
     <div class="row">
+     <% @posts.each do |post| %>
       <div class="col-lg-6 col-md-12">
         <div class="row">
           <div class="col-3">
-            <a href="https://member.ard-online.jp/usernote/foreigner-community-vol15/">
-              <div class="mypage__usernote-thumb" style="background-image:url(https://member.ard-online.jp/wp-content/themes/ar_ver5/img/noimage.png);background-size:cover;background-position:center;width:100%;min-width:80px;height:80px;"> </div>
-            </a>
+            <%= link_to "/post/#{post.id}" do %>
+              <div class="mypage__usernote-thumb" style="background-image:url(<%= post.user.coverimageurl %>);background-size:cover;background-position:center;width:100%;min-width:80px;height:80px;"> </div>
+            <% end %>
           </div>
           <div class="col-9">
-            <div class="usernote__mypagelist__date">20.08.17 譲原 裕之</div>
-            <div class="usernote__mypagelist__title"><a href="https://member.ard-online.jp/usernote/foreigner-community-vol15/">【軌跡 Day.15】在日外国人コミュニティ事業</a><br> <span>【目標】▶︎1年1.社会『道を定め、存在意義に火を灯し始める』2.目標同じ軸を持ち、自身の目標が定まった、命をかけられる</span> </div> <span class="badge badge-pill badge-info">♥ 4</span> 
+            <div class="usernote__mypagelist__date">20.08.17 <%= post.user.name %></div>
+            <div class="usernote__mypagelist__title">
+              <%= link_to "#{post.title}", "/post/#{post.id}" %>
+            </div> 
+            <%= link_to "消去する", "/post/#{post.id}/destroy", {method: "post"} %>
+            <%= link_to "編集する", "/post/#{post.id}/edit" %>
           </div>
         </div>
       </div>
+     <% end %>
     </div>
   </div>
 </section>

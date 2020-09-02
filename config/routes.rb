@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get 'usernote/:id' => 'usernote#top'
 
   # 
-  get 'user/:id' => 'user#user'
+  get 'user/:id' => 'user#top'
   get 'profile' => 'profile#top'
 
   # プロフィール編集

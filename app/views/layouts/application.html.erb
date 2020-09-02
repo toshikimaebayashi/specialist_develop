@@ -15,15 +15,13 @@
       <div class="containar">
         <nav class="navbar navbar-expand-lg"> 
         <div class="bg-wrapper">
-          <a class="navbar-brand" href="/">AR</a> 
+          <%= link_to "AR", "/", { :class => "navbar-brand"} %>
           <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item active"> <a class="nav-link" href="/">トップ </a> </li>
-              <li class="nav-item"> <a class="nav-link" href="/unit/basicstrategy/?mode=basic">基礎知識</a> </li>
-              <li class="nav-item"> <a class="nav-link" href="/usernotes">ユーザーノート</a> </li>
-              <li class="nav-item"> <a class="nav-link" href="/projects-lists">プロジェクト</a> </li>
-              <li class="nav-item"> <a class="nav-link" href="/mypage">マイページ</a> </li>
-              <li class="nav-item"> <a class="nav-link" href="/contact">お問い合わせ</a> </li>
+              <li class="nav-item"> <%= link_to "トップ", "/", { :class => "nav-link"} %> </li>
+              <li class="nav-item"> <%= link_to "基礎知識", "/basiccategory", { :class => "nav-link"} %> </li>
+              <li class="nav-item"> <%= link_to "マイページ", "/profile", { :class => "nav-link"} %>  </li>
+              <li class="nav-item"> <%= link_to "お問い合わせ", "/contact", { :class => "nav-link"} %> </li>
             </ul> 
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#search">
               <i class="fas fa-search"></i>
@@ -43,10 +41,9 @@
           <label id="nav-close-btn" for="nav-input"><span></span></label>
           <ul class="header-list">
             
-            <li class="listItem"><a href="/">TOP</a></li>
-            <li class="listItem"><a href="/">基礎知識</a></li>
-            <li class="listItem"><a href="/">ユーザーノート</a></li>
-            <li class="listItem"><a href="/">マイページ</a></li>
+            <li class="listItem"> <%= link_to "トップ", "/" %></li>
+            <li class="listItem"><%= link_to "基礎知識", "/basiccategory" %></li>
+            <li class="listItem"><%= link_to "プロフィール", "/profile" %></li>
           </ul>
         </div>
       </div>
