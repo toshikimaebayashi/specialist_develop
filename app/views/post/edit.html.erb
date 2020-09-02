@@ -27,7 +27,7 @@
 
 <div class="article-box">
 <%= link_to 'マークダウンについて', "https://qiita.com/Qiita/items/c686397e4a0f4f11683d" %>
-<%= form_with url: "/post/create", local: true, data: { persist: 'garlic' } do |f| %>
+<%= form_with url: "/post/#{@post.id}/update", local: true, data: { persist: 'garlic' } do |f| %>
   <p>タイトル</p> 
   <%= f.text_field :title , :value => @post.title %> %> 
   <p>ボディ</p>

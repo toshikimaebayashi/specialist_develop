@@ -24,35 +24,17 @@ class PostController < User::ApplicationController
       redirect_to('/preview')
 
     else post_params[:preview] == "fasle"
-
-      # 下書きとして保存しない場合＝本番に反映させたい場合
-      if post_params[:draft] == "fasle"
-        @post = Post.new(
-          title: post_params[:title], 
-          text: post_params[:text], 
-          user_id: current_user.id,
-          draft: "fasle"
-        )
-        session[:preview_title].clear
-        session[:preview_text].clear
+      @post = Post.new(
+        title: post_params[:title], 
+        text: post_params[:text], 
+        user_id: current_user.id,
+        draft: post_params[:draft]
+      )
+      session[:preview_title].clear
+      session[:preview_text].clear
       
-        @post.save
-        redirect_to('/')
-
-      elsif post_params[:draft] == "true"
-        @post = Post.new(
-          title: post_params[:title], 
-          text: post_params[:text], 
-          user_id: current_user.id,
-          draft: "true"
-        )
-        session[:preview_title].clear
-        session[:preview_text].clear
-
-        @post.save
-        redirect_to('/profile')
-
-      end
+      @post.save
+      redirect_to('/')
     end
   end
 
@@ -85,30 +67,17 @@ class PostController < User::ApplicationController
 
     else post_params[:preview] == "fasle"
       # 下書きとして保存しない場合＝本番に反映させたい場合
-      if post_params[:draft] == "fasle"
+      @post = Post.find_by(id: params[:id])
+      @post.update(
+        title: post_params[:title], 
+        text: post_params[:text], 
+        user_id: current_user.id,
+        draft: post_params[:draft]
+      )
+      session[:preview_title].clear
+      session[:preview_text].clear
 
-        @post = Post.find_by(id: params[:id]).update(
-          title: post_params[:title], 
-          text: post_params[:text], 
-          user_id: current_user.id,
-          draft: "fasle"
-        )
-        session[:preview_title].clear
-        session[:preview_text].clear
-        redirect_to('/profile')
-
-      elsif post_params[:draft] == "true"
-        @post = Post.find_by(id: params[:id]).update(
-          title: post_params[:title], 
-          text: post_params[:text], 
-          user_id: current_user.id,
-          draft: "true"
-        )
-        session[:preview_title].clear
-        session[:preview_text].clear
-        redirect_to('/profile')
-
-      end
+      redirect_to('/')
     end
   end
 
