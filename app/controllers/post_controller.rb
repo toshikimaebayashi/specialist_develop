@@ -77,8 +77,14 @@ class PostController < User::ApplicationController
         user_id: current_user.id,
         draft: post_params[:draft]
       )
-      session[:preview_title].clear
-      session[:preview_text].clear
+
+      if session[:preview_title]
+        session[:preview_title].clear
+      end
+
+      if session[:preview_text]
+        session[:preview_text].clear
+      end
 
       redirect_to('/')
     end
