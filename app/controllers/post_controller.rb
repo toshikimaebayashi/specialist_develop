@@ -38,14 +38,13 @@ class PostController < User::ApplicationController
         session[:preview_text].clear
       end
 
-      if post_params[:draft]　== "false"
+      if post_params[:draft] == "false"
         flash[:notice] = "投稿しました！"
-      end
 
-      if post_params[:draft]　== "true"
+      elsif post_params[:draft] == "true"
         flash[:notice] = "下書きとして保存しました"
       end
-      
+
       @post.save
       redirect_to('/')
     end
