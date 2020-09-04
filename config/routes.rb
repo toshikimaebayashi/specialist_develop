@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get 'profile/edit/name' => 'profile#name_edit'
   get 'profile/edit/text' => 'profile#text_edit'
 
+  post 'profile/update' => 'profile#update'
   post 'profile/update/coverimage' => 'profile#coverimage_update'
   post 'profile/update/iconimage' => 'profile#iconimage_update'
   post 'profile/update/name' => 'profile#name_update'
