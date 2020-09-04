@@ -42,7 +42,7 @@
             <% end %>
           </div>
           <div class="col-9">
-            <div class="leader__indexlist__date">20.08.16 <%= recommend_post.user.name %></div>
+            <div class="leader__indexlist__date"><%= @post.updated_at.strftime("%Y.%m.%d")%> <%= recommend_post.user.name %></div>
             <div class="leader__indexlist__title">
               <%= link_to "#{recommend_post.title}", "/post/#{recommend_post.id}" %>
             </div>

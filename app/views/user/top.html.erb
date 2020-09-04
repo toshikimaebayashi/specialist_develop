@@ -45,7 +45,7 @@
             <% end %>
           </div>
           <div class="col-9">
-            <div class="usernote__mypagelist__date">20.08.17 <%= post.user.name %></div>
+            <div class="usernote__mypagelist__date"><%= @post.updated_at.strftime("%Y.%m.%d")%> <%= post.user.name %></div>
             <div class="usernote__mypagelist__title">
               <%= link_to "#{post.title}", "/post/#{post.id}" %>
             </div> 
