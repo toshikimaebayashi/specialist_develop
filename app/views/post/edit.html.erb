@@ -1,19 +1,4 @@
-
-
-
 <div class="container">
-
-<div class="image-list">
-<% if @postimages != nil %>
-  <% @postimages.each do |postimage| %>
-  <div class="image-item">
-    <img src="<%= postimage.imageurl %>" class="post-image">
-    <input id="copyTarget<%= postimage.id %>" type="text" value="![post](<%= postimage.imageurl %>)" readonly>
-    <button onclick="copyToClipboard(<%= postimage.id %>)">はるで</button>
-  </div>
-  <% end %>
-<% end %>
-</div>
 
 <div class="upload-box">
 <%= form_with url: "/post/postimage_upload", local: true, data: { persist: 'garlic' } do |f| %>
@@ -25,11 +10,24 @@
 <% end %> 
 </div>
 
+<button id="toggleMenuButton">アップロードした画像を表示する</button>
+<div class="image-list" id="toggleMenu">
+<% if @postimages != nil %>
+  <% @postimages.each do |postimage| %>
+  <div class="image-item">
+    <img src="<%= postimage.imageurl %>" class="post-image">
+    <input id="copyTarget<%= postimage.id %>" type="text" value="![post](<%= postimage.imageurl %>)" readonly>
+    <button onclick="copyToClipboard(<%= postimage.id %>)">コピー</button>
+  </div>
+  <% end %>
+<% end %>
+</div>
+
 <div class="article-box">
 <%= link_to 'マークダウンについて', "https://qiita.com/Qiita/items/c686397e4a0f4f11683d" %>
 <%= form_with url: "/post/#{@post.id}/update", local: true, data: { persist: 'garlic' } do |f| %>
   <p>タイトル</p> 
-  <%= f.text_field :title , :value => @post.title %> %> 
+  <%= f.text_field :title , :value => @post.title %> 
   <p>ボディ</p>
   <%= f.text_area :text, class: "materialize-textarea", id: "md-textarea" , :value => @post.text %>
  
@@ -50,5 +48,24 @@
 </script>
 
   
+
+  <script>
+(function(window,document){
+    var _toggleMenuButton = document.getElementById('toggleMenuButton');
+    var _toggleMenu = document.getElementById('toggleMenu');
+    var _clientH;
+    init();
+    function init() {
+        _toggleMenu.style.height = 'auto';
+        _clientH = _toggleMenu.clientHeight;
+        _toggleMenu.style.height = '0px';
+        _toggleMenuButton.addEventListener('click',function(){clickToggle();},false);
+    }
+    function clickToggle() {
+        var lastH = _toggleMenu.style.height;
+        _toggleMenu.style.height = (lastH == '' || lastH == '0px') ? _clientH + 'px' : '0px';
+    }
+})(window,document);
+</script>
    </div>
 

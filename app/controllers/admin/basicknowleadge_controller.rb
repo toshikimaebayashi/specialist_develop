@@ -1,5 +1,6 @@
 class Admin::BasicknowleadgeController < User::ApplicationController
   protect_from_forgery 
+  before_action :basic
 
   def url
     @basic_knowledges = BasicKnowledge.where(category_id: params[:id])

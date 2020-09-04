@@ -7,6 +7,9 @@
 .image-list {
   display: flex;
   flex-wrap: wrap;
+  overflow: hidden;
+  transition: all 0.5s;
+
   .image-item {
     width: 15%;
     padding: 8px;

@@ -4,6 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.8'
 gem 'devise'
 
+gem 'htmlbeautifier'
+
+gem 'dotenv-rails'
+
 gem 'cloudinary' , '1.11.1'
 gem 'carrierwave', '~> 1.3.1'
 
@@ -74,3 +78,5 @@ gem 'autoprefixer-rails', '~> 9.0', '>= 9.0.2'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'kaminari'

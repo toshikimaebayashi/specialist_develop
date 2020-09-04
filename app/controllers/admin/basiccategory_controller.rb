@@ -1,5 +1,6 @@
 class Admin::BasiccategoryController < User::ApplicationController
   protect_from_forgery 
+  before_action :basic
 
   def index
     @basic_knowledge_categories = BasicKnowledgeCategory.all

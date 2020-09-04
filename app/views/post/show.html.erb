@@ -12,8 +12,9 @@
             <% end %>
           </div>
           <div class="col-7 col-sm-8 col-md-10"> 
-            <span class="usernote__header-date">2020.08.15</span>
-            <br> <%= @post.user.selfideal %><br><span class="usernote__header-displayname"><%= @post.user.name %> </span>  </div>
+            <span class="usernote__header-date"><%= @post.updated_at.strftime("%Y.%m.%d")%></span>
+            <br> <%= @post.user.selfideal %><br><span class="usernote__header-displayname"><%= @post.user.name %> </span>  
+          </div>
         </div>
       </div>
       <!-- .usernote__header -->

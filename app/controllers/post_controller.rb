@@ -4,7 +4,7 @@ class PostController < User::ApplicationController
   end
 
   def new
-    @postimages = PostImage.where(user_id: current_user.id)
+    @postimages = PostImage.where(user_id: current_user.id).order(id: "DESC").last(10)
   end
 
   def postimage_upload
@@ -34,13 +34,15 @@ class PostController < User::ApplicationController
       session[:preview_text].clear
       
       @post.save
+
+      flash[:notice] = "投稿しました！"
       redirect_to('/')
     end
   end
 
   def edit
     @post = Post.find_by(id: params[:id])
-    @postimages = PostImage.where(user_id: current_user.id)
+    @postimages = PostImage.where(user_id: current_user.id).order(id: "DESC").last(10)
   end
 
   def preview
@@ -51,12 +53,13 @@ class PostController < User::ApplicationController
       @preview_title = session[:preview_title]
       @preview_text = session[:preview_text]
       @user = User.find_by(id: current_user.id)
+      flash[:notice] = "これはプレビューモードです"
     end
   end
 
   def show
     @post = Post.find_by(id: params[:id])
-    @recommend_posts = Post.all.order(id: "DESC")
+    @recommend_posts = Post.where(draft: "false").order(id: "DESC")
   end
 
   def update
@@ -66,7 +69,7 @@ class PostController < User::ApplicationController
       redirect_to('/preview')
 
     else post_params[:preview] == "fasle"
-      # 下書きとして保存しない場合＝本番に反映させたい場合
+      
       @post = Post.find_by(id: params[:id])
       @post.update(
         title: post_params[:title], 

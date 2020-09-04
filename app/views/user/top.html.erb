@@ -37,7 +37,7 @@
     <p><a href="http://member.ard-online.jp/wp-admin/edit.php?post_type=usernote" target="_blank" class="btn btn-primary">今スグユーザーノートを書く</a></p>
     <div class="row">
       <% @posts.each do |post| %>
-      <div class="col-lg-6 col-md-12">
+      <div class="col-lg-6 col-md-12 post-list">
         <div class="row">
           <div class="col-3">
             <%= link_to "/post/#{post.id}" do %>

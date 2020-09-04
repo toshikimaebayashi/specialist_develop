@@ -1,7 +1,7 @@
 class ProfileController < User::ApplicationController
   def top
     @user = User.find_by(id: current_user.id)
-    @posts = Post.where(user_id: current_user.id)
+    @posts = Post.where(user_id: current_user.id).where(draft: "false")
     @draft_posts = Post.where(user_id: current_user.id).where(draft: "true")
     if @user.name == nil
       render("profile/new")

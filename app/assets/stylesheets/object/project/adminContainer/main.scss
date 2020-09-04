@@ -1,0 +1,46 @@
+.data-table {
+  width: 800px;
+  margin: 70px auto 30px;
+  font-size: 12px;
+
+  a {
+    color: blue;
+  }
+
+  .tableTitle {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #333;
+  }
+
+  .table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 8px;
+    background: #fff;
+
+    a {
+      color: blue;
+    }
+  }
+}
+
+.table > thead > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > th,
+.table > tbody > tr > td,
+.table > tfoot > tr > th,
+.table > tfoot > tr > td {
+  padding: 15px;
+  line-height: 1.428571429;
+  text-align: center;
+  min-width: 120px;
+  overflow: scroll;
+  max-width: 120px;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+  font-weight: normal;
+}

@@ -10,6 +10,12 @@
   </head>
 
   <body>
+  <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+  <% if user_signed_in? %>
   <header class="pc">
     <div class="bs-component">
       <div class="containar">
@@ -21,7 +27,8 @@
               <li class="nav-item"> <%= link_to "トップ", "/", { :class => "nav-link"} %> </li>
               <li class="nav-item"> <%= link_to "基礎知識", "/basiccategory", { :class => "nav-link"} %> </li>
               <li class="nav-item"> <%= link_to "マイページ", "/profile", { :class => "nav-link"} %>  </li>
-              <li class="nav-item"> <%= link_to "お問い合わせ", "/contact", { :class => "nav-link"} %> </li>
+              <li class="nav-item"> <%= link_to "お問い合わせ", "https://docs.google.com/forms/d/e/1FAIpQLSeTdRazKFotEHDOu32EXl-U1AmBYJ9MrBymELCfB3ORdxpL3Q/viewform", { :class => "nav-link"} %> </li>
+              <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             </ul> 
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#search">
               <i class="fas fa-search"></i>
@@ -40,7 +47,7 @@
         <div id="nav-content"> 
           <label id="nav-close-btn" for="nav-input"><span></span></label>
           <ul class="header-list">
-            
+            <li class="listItem"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             <li class="listItem"> <%= link_to "トップ", "/" %></li>
             <li class="listItem"><%= link_to "基礎知識", "/basiccategory" %></li>
             <li class="listItem"><%= link_to "プロフィール", "/profile" %></li>
@@ -48,6 +55,8 @@
         </div>
       </div>
     </header>
+  
+  <% end %>
   <%= yield %>
   </body>
   
