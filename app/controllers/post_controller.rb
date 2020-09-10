@@ -18,18 +18,20 @@ class PostController < User::ApplicationController
 
   def create
 
-    if post_params[:preview] == "true"
+    if post_params[:commit] == "プレビュー"
       session[:preview_title] = post_params[:title]
       session[:preview_text] = post_params[:text]
       redirect_to('/preview')
 
-    else post_params[:preview] == "fasle"
+    elsif post_params[:commit] == "下書き保存"
       @post = Post.new(
         title: post_params[:title], 
         text: post_params[:text], 
         user_id: current_user.id,
-        draft: post_params[:draft]
+        draft: "true"
       )
+      flash[:notice] = "下書きとして保存しました"
+
       if session[:preview_title]
         session[:preview_title].clear
       end
@@ -38,15 +40,29 @@ class PostController < User::ApplicationController
         session[:preview_text].clear
       end
 
-      if post_params[:draft] == "false"
-        flash[:notice] = "投稿しました！"
+      @post.save
+      redirect_to('/')
 
-      elsif post_params[:draft] == "true"
-        flash[:notice] = "下書きとして保存しました"
+    elsif post_params[:commit] == "投稿する"
+      @post = Post.new(
+        title: post_params[:title], 
+        text: post_params[:text], 
+        user_id: current_user.id,
+        draft: "false"
+      )
+      flash[:notice] = "投稿しました！"
+
+      if session[:preview_title]
+        session[:preview_title].clear
+      end
+
+      if session[:preview_text]
+        session[:preview_text].clear
       end
 
       @post.save
       redirect_to('/')
+
     end
   end
 
@@ -73,20 +89,21 @@ class PostController < User::ApplicationController
   end
 
   def update
-    if post_params[:preview] == "true"
+    
+    if post_params[:commit] == "プレビュー"
       session[:preview_title] = post_params[:title]
       session[:preview_text] = post_params[:text]
       redirect_to('/preview')
 
-    else post_params[:preview] == "fasle"
-      
+    elsif post_params[:commit] == "下書き保存"
       @post = Post.find_by(id: params[:id])
       @post.update(
         title: post_params[:title], 
         text: post_params[:text], 
         user_id: current_user.id,
-        draft: post_params[:draft]
+        draft: "true"
       )
+      flash[:notice] = "下書きとして保存しました"
 
       if session[:preview_title]
         session[:preview_title].clear
@@ -96,7 +113,30 @@ class PostController < User::ApplicationController
         session[:preview_text].clear
       end
 
+      @post.save
       redirect_to('/')
+
+    elsif post_params[:commit] == "投稿する"
+      @post = Post.find_by(id: params[:id])
+      @post.update(
+        title: post_params[:title], 
+        text: post_params[:text], 
+        user_id: current_user.id,
+        draft: "false"
+      )
+      flash[:notice] = "投稿しました！"
+
+      if session[:preview_title]
+        session[:preview_title].clear
+      end
+
+      if session[:preview_text]
+        session[:preview_text].clear
+      end
+
+      @post.save
+      redirect_to('/')
+      
     end
   end
 
@@ -108,7 +148,7 @@ class PostController < User::ApplicationController
 
   private
   def post_params
-    params.permit(:title, :text, :preview, :draft)
+    params.permit(:title, :text, :preview, :draft, :commit)
   end
 
   def postimage_params

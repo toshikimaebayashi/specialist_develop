@@ -22,7 +22,6 @@
     <% end %>
       
     </div>
-    <!-- .col-12 -->
     <div class="col-sm-4 mypage__profile">
       <h3>プロフィール</h3> <%= @user.profile %> </div>
     <div class="col-sm-4 mypage__philosophy">
@@ -45,7 +44,11 @@
             <% end %>
           </div>
           <div class="col-9">
-            <div class="usernote__mypagelist__date"><%= @post.updated_at.strftime("%Y.%m.%d")%> <%= post.user.name %></div>
+          <% if post.updated_at %>
+            <div class="usernote__mypagelist__date"><%= post.updated_at.strftime("%Y.%m.%d")%> <%= post.user.name %></div>
+          <% elsif post.created_at %>
+            <div class="usernote__mypagelist__date"><%= post.created_at.strftime("%Y.%m.%d")%> <%= post.user.name %></div>
+          <% end %>
             <div class="usernote__mypagelist__title">
               <%= link_to "#{post.title}", "/post/#{post.id}" %>
             </div> 

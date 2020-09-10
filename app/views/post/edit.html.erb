@@ -5,7 +5,7 @@
   <div class="contact-box">
     <span class="itemName">画像をアップロードする</span> 
     <%= f.file_field :imageurl %>
-    <%= f.submit %>
+    <%= f.submit "保存する", class: "submitBtn" %>
   </div>
 <% end %> 
 </div>
@@ -31,10 +31,11 @@
   <p>ボディ</p>
   <%= f.text_area :text, class: "materialize-textarea", id: "md-textarea" , :value => @post.text %>
  
-  プレビューモード<%= f.check_box :preview ,{checked: true}, "true", "false" %>
-  下書きとして保存する<%= f.check_box :draft ,{checked: true}, "true", "false" %>
+  
+  <%= f.submit "プレビュー", class: "previewBtn" %>
   <p></p>
-  <%= f.submit %>
+  <%= f.submit "投稿する", class: "submitBtn" %>
+  <%= f.submit "下書き保存", class: "draftBtn" %>
 <% end %> 
 </div>
 
