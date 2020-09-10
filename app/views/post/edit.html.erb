@@ -25,7 +25,7 @@
 
 <div class="article-box">
 <%= link_to 'マークダウンについて', "https://qiita.com/Qiita/items/c686397e4a0f4f11683d" %>
-<%= form_with url: "/post/#{@post.id}/update", local: true, data: { persist: 'garlic' } do |f| %>
+<%= form_with id: 'new_form', url: "/post/#{@post.id}/update", local: true, data: { persist: 'garlic' } do |f| %>
   <p>タイトル</p> 
   <%= f.text_field :title , :value => @post.title %> 
   <p>ボディ</p>
@@ -48,6 +48,19 @@
   }
 </script>
 
+  <script>
+ $("#new_form").submit(function(){
+    if ($("input[name='title']").val() == '' 
+      || $("input[name='text']").val() == '' 
+       )
+    {
+      alert('必須項目を入力してください');
+      return false;
+    } else {
+      $("#new_form").submit();
+    }
+  });
+ </script>
   
 
   <script>

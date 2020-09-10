@@ -58,5 +58,8 @@ Rails.application.routes.draw do
   post 'post/:id/destroy' => 'post#destroy'
 
   post 'post/postimage_upload' => 'post#postimage_upload'
+
+
+  get ':id' => 'home#no'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

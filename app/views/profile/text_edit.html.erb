@@ -5,11 +5,11 @@
       
       <div class="contact-box">
         <span class="itemName">プロフィール</span> 
-        <div class="text-wrap"><textarea name="profile" rows="20"></textarea></div>
+        <div class="text-wrap"><textarea name="profile" rows="20" placeholder="<%= @user.profile %>" ></textarea></div>
       </div>
       <div class="contact-box">
         <span class="itemName">自己理念</span> 
-        <div class="text-wrap"><textarea name="selfideal" rows="4"></textarea></div>
+        <div class="text-wrap"><textarea name="selfideal" rows="4" placeholder="<%= @user.selfideal %>" ></textarea></div>
       </div>
       <div class="submit-wrap">
         <input type="submit" value="保存"> 
