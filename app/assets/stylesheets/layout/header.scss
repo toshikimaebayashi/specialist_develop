@@ -77,9 +77,20 @@
 }
 
 .header-sp {
-  padding: 27px 10px;
+  padding: 17px 10px;
   background: #7d0000;
   overflow: hidden;
+
+  .navbar-brand {
+    display: block;
+    background: url(https://member.ard-online.jp/wp-content/themes/ar_ver4/img/ar-logo.png)
+      center top no-repeat;
+    width: 28px;
+    height: 28px;
+    text-indent: -9999px;
+    float: left;
+    margin-left: 5px;
+  }
 
   #nav-drawer {
     position: relative;
@@ -91,7 +102,8 @@
     #nav-open {
       float: right;
       width: 30px;
-      height: 22px;
+      height: 25px;
+      padding-top: 5px;
       vertical-align: middle;
 
       span,
@@ -101,7 +113,7 @@
         height: 3px;
         width: 25px;
         border-radius: 3px;
-        background: #555;
+        background: #333;
         display: block;
         content: "";
         cursor: pointer;

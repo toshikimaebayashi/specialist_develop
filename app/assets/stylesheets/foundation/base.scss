@@ -308,6 +308,8 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  -webkit-appearance: none;
+  border: 1px solid #eee;
 }
 
 button {
