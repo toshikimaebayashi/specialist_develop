@@ -10,29 +10,27 @@
 <% end %> 
 </div>
 
-<button id="toggleMenuButton">アップロードした画像を表示する</button>
 <div class="image-list" id="toggleMenu">
 <% if @postimages != nil %>
   <% @postimages.each do |postimage| %>
   <div class="image-item">
     <img src="<%= postimage.imageurl %>" class="post-image">
     <input id="copyTarget<%= postimage.id %>" type="text" value="![post](<%= postimage.imageurl %>)" readonly>
-    <button onclick="copyToClipboard(<%= postimage.id %>)">コピー</button>
+    <button onclick="copyToClipboard(<%= postimage.id %>)">URLをコピー</button>
   </div>
   <% end %>
 <% end %>
 </div>
 
 <div class="article-box">
-<%= link_to 'マークダウンについて', "https://qiita.com/Qiita/items/c686397e4a0f4f11683d" %>
 <%= form_with id: 'new_form', url: "/post/#{@post.id}/update", local: true, data: { persist: 'garlic' } do |f| %>
   <p>タイトル</p> 
   <%= f.text_field :title , :value => @post.title %> 
   <p>ボディ</p>
   <%= f.text_area :text, class: "materialize-textarea", id: "md-textarea" , :value => @post.text %>
- 
+ <span># 大見出し</span> <span>## 中見出し</span> <span>### 小見出し</span> <span>**太字**</span><span>画像：上の画像URLをコピーして貼り付け</span><span>改行、空行：半角スペース2つ、&lt;br&gt;</span>
   
-  <%= f.submit "プレビュー", class: "previewBtn" %>
+  <%= f.submit "プレビュー", class: "previewBtn", formtarget: "_blank", :data => { disable_with: false } %>
   <p></p>
   <%= f.submit "投稿する", class: "submitBtn" %>
   <%= f.submit "下書き保存", class: "draftBtn" %>
