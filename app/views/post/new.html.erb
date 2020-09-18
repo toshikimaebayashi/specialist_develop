@@ -28,9 +28,9 @@
   <%= f.text_field :title %> 
   <p>ボディ</p>
   <%= f.text_area :text, class: "materialize-textarea", id: "md-textarea" %>
-  <span># 大見出し</span> <span>## 中見出し</span> <span>### 小見出し</span> <span>**太字**</span><span>画像：上の画像URLをコピー</span><span>改行：文末に半角空白スペースを2つつける</span>
+  <span># 大見出し</span> <span>## 中見出し</span> <span>### 小見出し</span> <span>**太字**</span><span>画像：上の画像URLをコピーして貼り付け</span><span>改行、空行：半角スペース2つ、&lt;br&gt;</span>
   <p></p>
-  <%= f.submit "プレビュー", class: "previewBtn", formtarget: "_blank" %>
+  <%= f.submit "プレビュー", class: "previewBtn", formtarget: "_blank", :data => { disable_with: false } %>
   <p></p>
   <%= f.submit "投稿する", class: "submitBtn" %>
   <%= f.submit "下書き保存", class: "draftBtn" %>

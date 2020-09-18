@@ -79,7 +79,7 @@ class PostController < User::ApplicationController
       @preview_title = session[:preview_title]
       @preview_text = session[:preview_text]
       @user = User.find_by(id: current_user.id)
-      flash[:notice] = "これはプレビューモードです"
+      
     end
   end
 

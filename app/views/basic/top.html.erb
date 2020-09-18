@@ -7,7 +7,7 @@
           <% @basic_knowledge_categories.each do |category| %>
             <li class="list-group-item">
               <span class="glyphicon glyphicon-book"></span>　
-              <%= link_to category.name, "/basiccategory/#{category.id}" %>
+              【経営基礎 vol.<%= category.knowledge_category_id %>】<%= link_to  category.name, "/basiccategory/#{category.id}" %>
             </li>
           <% end %>
         </ul>
