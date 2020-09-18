@@ -3,7 +3,7 @@ class Admin::BasiccategoryController < User::ApplicationController
   before_action :basic
 
   def index
-    @basic_knowledge_categories = BasicKnowledgeCategory.all
+    @basic_knowledge_categories = BasicKnowledgeCategory.all.order(:id)
   end
 
   def new

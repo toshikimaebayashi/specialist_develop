@@ -24,6 +24,36 @@
         <%= markdown(@post.text).html_safe %>
         <br>
       </div>
+      <% if @comments.empty? == false %>
+      <div id="comments">
+        <h4 id="comments-count">コメント</h4>
+        <ul id="comments-list">
+        <% @comments.each do |comment| %>
+          <li>
+            <div class="comment-author vcard">
+              <%= link_to "/user/#{comment.user.id}" do %>
+                <img src="<%= comment.user.iconimageurl %>" style="border-radius:50%" width="36">
+              <% end %>
+              <%= comment.user.name %>
+            </div>
+            <p><%= comment.body %></p>
+            <% if comment.user.id == current_user.id %>
+              <%= link_to "削除", "/commnet/#{comment.id}/destroy", class: "destroyBtn" %>
+            <% end %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <div class="comment_form">
+        <%= form_with id: 'form', url: "/comment/#{@post.id}/create", local: true, data: { persist: 'garlic' } do |f| %>
+          <h4>コメントを残す</h4>
+          <p class="comment-form-comment">
+            <%= f.text_area :body, class: "materialize-textarea", id: "md-textarea" %>
+            <%= f.submit "コメントを送信", class: "submitBtn" %>
+          </p>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -80,7 +80,9 @@
   }
 
   .mypage__posts a {
-    color: #111;
+    color: #900;
+    text-decoration: underline;
+    font-size: 18px;
   }
 }
 
@@ -107,5 +109,11 @@
 
   .mypage__header__name .col-12 {
     font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .post-list {
+    width: 100%;
   }
 }

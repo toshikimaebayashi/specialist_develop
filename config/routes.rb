@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'basicknowleadge/:id/new' => 'basicknowleadge#new'
     post 'basicknowleadge/:id/create' => 'basicknowleadge#create'
     post 'basicknowledge/:id/destroy' => 'basicknowleadge#destroy'
+    post 'basicknowleadge/ranking/:id/create' => 'basicknowleadge#ranking_create'
 
     get 'basicknowleadge/:id/url' => 'basicknowleadge#url'
     post 'basiccategory/create' => 'basiccategory#create'
@@ -56,6 +57,9 @@ Rails.application.routes.draw do
   get 'preview' => 'post#preview'
   post 'post/:id/update' => 'post#update'
   post 'post/:id/destroy' => 'post#destroy'
+
+  post 'comment/:id/create' => 'comment#create'
+  post 'comment/:id/destroy' => 'comment#destroy'
 
   post 'post/postimage_upload' => 'post#postimage_upload'
 

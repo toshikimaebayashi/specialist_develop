@@ -30,9 +30,7 @@
               <li class="nav-item"> <%= link_to "お問い合わせ", "https://docs.google.com/forms/d/e/1FAIpQLSeTdRazKFotEHDOu32EXl-U1AmBYJ9MrBymELCfB3ORdxpL3Q/viewform", { :class => "nav-link"} %> </li>
               <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             </ul> 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#search">
-              <i class="fas fa-search"></i>
-            </button> 
+           
           </div>
         </nav>
         </div>
@@ -57,7 +55,10 @@
     </header>
   
   <% end %>
-  <%= yield %>
+    <%= yield %>
+  <footer>
+    2020 © ALLROUNDER_Specialist
+  </footer>
   </body>
   
 </html>

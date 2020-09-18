@@ -99,6 +99,11 @@ a {
   color: #fff;
   padding-top: 50px;
   padding-bottom: 50px;
+
+  img {
+    object-fit: cover;
+    height: 70px;
+  }
 }
 
 .mt10 {
@@ -115,12 +120,12 @@ a {
 
   .col-5 {
     -ms-flex: 0 0 41.666667%;
-    flex: 0 0 41.666667%;
+    flex: 0 0 21.666667%;
     max-width: 41.666667%;
   }
 
   .col-md-10 {
-    flex: 0 0 83.333333%;
+    flex: 100%;
     max-width: 100%;
   }
 

@@ -1,6 +1,5 @@
 <div class="container">
 
-
 <div class="upload-box">
 <%= form_with url: "/post/postimage_upload", local: true, data: { persist: 'garlic' } do |f| %>
   <div class="contact-box">
@@ -11,29 +10,27 @@
 <% end %> 
 </div>
 
-<button id="toggleMenuButton">アップロードした画像を表示する</button>
 <div class="image-list" id="toggleMenu">
 <% if @postimages != nil %>
   <% @postimages.each do |postimage| %>
   <div class="image-item">
     <img src="<%= postimage.imageurl %>" class="post-image">
     <input id="copyTarget<%= postimage.id %>" type="text" value="![post](<%= postimage.imageurl %>)" readonly>
-    <button onclick="copyToClipboard(<%= postimage.id %>)">コピー</button>
+    <button onclick="copyToClipboard(<%= postimage.id %>)">URLをコピー</button>
   </div>
   <% end %>
 <% end %>
 </div>
 
 <div class="article-box">
-<%= link_to 'マークダウンについて', "https://qiita.com/Qiita/items/c686397e4a0f4f11683d" %>
 <%= form_with id: 'new_form', url: "/post/create", local: true, data: { persist: 'garlic' } do |f| %>
   <p>タイトル</p> 
   <%= f.text_field :title %> 
   <p>ボディ</p>
   <%= f.text_area :text, class: "materialize-textarea", id: "md-textarea" %>
- 
+  <span># 大見出し</span> <span>## 中見出し</span> <span>### 小見出し</span> <span>**太字**</span><span>画像：上の画像URLをコピー</span><span>改行：文末に半角空白スペースを2つつける</span>
   <p></p>
-  <%= f.submit "プレビュー", class: "previewBtn" %>
+  <%= f.submit "プレビュー", class: "previewBtn", formtarget: "_blank" %>
   <p></p>
   <%= f.submit "投稿する", class: "submitBtn" %>
   <%= f.submit "下書き保存", class: "draftBtn" %>
@@ -49,24 +46,7 @@
   }
 </script>
 
-<script>
-(function(window,document){
-    var _toggleMenuButton = document.getElementById('toggleMenuButton');
-    var _toggleMenu = document.getElementById('toggleMenu');
-    var _clientH;
-    init();
-    function init() {
-        _toggleMenu.style.height = 'auto';
-        _clientH = _toggleMenu.clientHeight;
-        _toggleMenu.style.height = '0px';
-        _toggleMenuButton.addEventListener('click',function(){clickToggle();},false);
-    }
-    function clickToggle() {
-        var lastH = _toggleMenu.style.height;
-        _toggleMenu.style.height = (lastH == '' || lastH == '0px') ? _clientH + 'px' : '0px';
-    }
-})(window,document);
- </script>
+
 
  <script>
  $("#new_form").submit(function(){

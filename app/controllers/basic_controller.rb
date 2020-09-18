@@ -6,7 +6,11 @@ class BasicController < User::ApplicationController
   end
 
   def movie
-    @basic_knowledges = BasicKnowledge.where(category_id: params[:id])
+    @basic_knowledge = BasicKnowledge.where(category_id: params[:id])
+    @basic_knowledges = @basic_knowledge.sort_by { |a| a[:ranking] } .reverse
+
+    
+
     @basic_knowledge_category = BasicKnowledgeCategory.find_by(id: params[:id])
   end
 

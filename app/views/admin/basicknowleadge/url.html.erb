@@ -5,18 +5,45 @@
       <tr>
         <th>url</th>
        <th></th>
+       <th>優先順位</th>
       </tr>
     </thead>
     <tbody>
       <% @basic_knowledges.each do |knowledge| %>
         <tr>
           <td>
-            <%= knowledge.url %>
+            <iframe width="300" height="150" src="https://www.youtube.com/embed/<%= knowledge.url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </td>
           <td>
             <%= link_to '消去', "/admin/basicknowledge/#{knowledge.id}/destroy" , {method: "post"} %>
           </td>
-          
+          <td>
+            <%= form_with id: 'new_form', url: "/admin/basicknowleadge/ranking/#{knowledge.category_id}/create", local: true, data: { persist: 'garlic' } do |f| %>
+              <%= f.select :ranking, [ ["1位",5], ["2位", 4], ["3位", 3 ] ,["4位", 2], ["5位", 1] ], prompt: "順位" %>
+              <%= f.hidden_field :knowledge_id, value: knowledge.id %>
+              <%= f.submit "送信" %>
+            <% end %>
+            <% if knowledge.ranking %>
+              <% if knowledge.ranking == 1 %>
+                5番目に表示されます
+
+              <% elsif knowledge.ranking == 2 %>
+                4番目に表示されます
+              
+              <% elsif knowledge.ranking == 3 %>
+                3番目に表示されます
+              
+              <% elsif knowledge.ranking == 4 %>
+                2番目に表示されます
+              
+              <% elsif knowledge.ranking == 5 %>
+                1番目に表示されます
+              
+              <% elsif knowledge.ranking == 0 %>
+                最後らへんに表示されます
+              <% end %>
+            <% end %>
+          </td>
         </tr>
         <% end %>
     </tbody>

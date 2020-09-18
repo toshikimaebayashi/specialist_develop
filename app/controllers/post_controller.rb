@@ -4,7 +4,7 @@ class PostController < User::ApplicationController
   end
 
   def new
-    @postimages = PostImage.where(user_id: current_user.id).order(id: "DESC").last(10)
+    @postimages = PostImage.where(user_id: current_user.id).order(id: "DESC").first(10)
   end
 
   def postimage_upload
@@ -85,7 +85,8 @@ class PostController < User::ApplicationController
 
   def show
     @post = Post.find_by(id: params[:id])
-    @recommend_posts = Post.where(draft: "false").order(id: "DESC")
+    @comments = Comment.where(post_id: params[:id]).all
+    @recommend_posts = Post.where(draft: "false").order(id: "DESC").last(9)
   end
 
   def update

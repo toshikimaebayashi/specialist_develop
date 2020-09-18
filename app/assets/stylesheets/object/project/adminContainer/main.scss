@@ -4,7 +4,8 @@
   font-size: 12px;
 
   a {
-    color: blue;
+    color: #7d0d00;
+    text-decoration: underline;
   }
 
   .tableTitle {
@@ -12,8 +13,8 @@
     margin-bottom: 20px;
     border: 1px solid transparent;
     border-radius: 4px;
-    color: #fff;
-    background-color: #333;
+    color: #3c763d;
+    background-color: #dff0d8;
   }
 
   .table {
@@ -23,7 +24,8 @@
     background: #fff;
 
     a {
-      color: blue;
+      color: #7d0d00;
+      text-decoration: underline;
     }
   }
 }
