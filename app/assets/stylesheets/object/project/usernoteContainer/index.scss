@@ -41,7 +41,6 @@
   -moz-font-smoothing: antialiased;
   -ms-font-smoothing: antialiased;
   -o-font-smoothing: antialiased;
-  font-smoothing: antialiased;
   position: relative;
   width: 100%;
   border-radius: 3px;
@@ -160,6 +159,13 @@
   .usernote__header-displayname {
     font-size: 160%;
   }
+}
+
+#usernote__recommend img {
+  width: 100%;
+  object-fit: cover;
+  height: 72px;
+  vertical-align: middle;
 }
 
 @media (min-width: 576px) {
