@@ -2,7 +2,8 @@
   <%= form_tag("/admin/basiccategory/#{@basic_knowledge_category.id}/update") do %>
     <div class="form">
       <div class="form-body">
-        <p>カテゴリ名</p> <textarea name="name"></textarea>
+        <p>カテゴリ名</p> <textarea name="name"><%= @basic_knowledge_category.name %></textarea>
+        <p>id（ただし他のid番号とかぶらないようにしてください）</p> <textarea name="id"><%= @basic_knowledge_category.id %></textarea>
         <input type="submit" value="投稿"> 
       </div>
     </div>
