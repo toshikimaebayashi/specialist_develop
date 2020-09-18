@@ -38,7 +38,7 @@ class Admin::BasiccategoryController < User::ApplicationController
   private
 
   def basic_knowledge_category_params
-    params.permit(:name, :id)
+    params.permit(:name, :knowledge_category_id)
   end
 
 

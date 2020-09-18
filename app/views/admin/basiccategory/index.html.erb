@@ -4,7 +4,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th>id名</th>
+        <th>カテゴリーid</th>
         <th>カテゴリー名</th>
         <th></th>
         <th></th>
@@ -15,7 +15,7 @@
       <% @basic_knowledge_categories.each do |category| %>
         <tr>
           <td>
-            <%= category.id %>
+            <%= category.knowledge_category_id %>
           </td>
           <td>
             <%= category.name %>
