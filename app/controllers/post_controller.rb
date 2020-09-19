@@ -85,7 +85,7 @@ class PostController < User::ApplicationController
 
   def show
     @post = Post.find_by(id: params[:id])
-    @comments = Comment.where(post_id: params[:id]).all
+    @comments = Comment.where(post_id: params[:id]).all.order(id: "DESC")
     @recommend_posts = Post.where(draft: "false").order(id: "DESC").last(9)
   end
 
