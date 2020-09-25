@@ -18,8 +18,8 @@
             <%= link_to '消去', "/admin/basicknowledge/#{knowledge.id}/destroy" , {method: "post"} %>
           </td>
           <td>
-            <%= form_with id: 'new_form', url: "/admin/basicknowleadge/ranking/#{knowledge.category_id}/create", local: true, data: { persist: 'garlic' } do |f| %>
-              <%= f.select :ranking, [ ["1位",5], ["2位", 4], ["3位", 3 ] ,["4位", 2], ["5位", 1] ], prompt: "順位" %>
+            <%= form_with id: 'new_form', url: "/admin/basicknowleadge/ranking/#{knowledge.category_id}/create", local: true, onsubmit: "return checkOption()" do |f| %>
+              <%= f.select :ranking, [ ["順位",0], ["1位",5], ["2位", 4], ["3位", 3 ] ,["4位", 2], ["5位", 1] ]  %>
               <%= f.hidden_field :knowledge_id, value: knowledge.id %>
               <%= f.submit "送信" %>
             <% end %>
@@ -49,3 +49,15 @@
     </tbody>
   </table>
 </div>
+
+
+<script>
+function checkOption() {
+    if ($("[name='ranking'] option:selected").val() == 0
+     
+      ){
+        alert('順位を正しく指定してください。');
+        return false;
+      }
+    }
+</script>
