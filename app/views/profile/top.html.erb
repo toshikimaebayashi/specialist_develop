@@ -38,9 +38,12 @@
       <h4><%= @user.selfideal %></h4>
     </div>
     <div class="col-sm-4 mypage__posts">
-      <h3>下書き中の記事</h3> <% @draft_posts.each do |post| %>
-      <%= link_to "#{post.title}", "/post/#{post.id}/edit" %>
-    <% end %></div>
+      <h3>下書き中の記事</h3> 
+      <% @draft_posts.each do |post| %>
+        <%= link_to "#{post.title}", "/post/#{post.id}/edit" %>
+        <br>
+      <% end %>
+    </div>
     
    
   </div>

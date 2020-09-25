@@ -5,6 +5,17 @@ class PostController < User::ApplicationController
 
   def new
     @postimages = PostImage.where(user_id: current_user.id).order(id: "DESC").first(10)
+    @postText
+    @postTitle
+
+    if session[:title]
+      @postTitle = session[:title]
+    end
+
+    if session[:text]
+      @postText = session[:text]
+    end
+
   end
 
   def postimage_upload
@@ -13,7 +24,20 @@ class PostController < User::ApplicationController
       user_id: current_user.id
     )
     @postimage.save
-    redirect_to('/post/new')
+
+    if params[:edit]
+      @id = params[:id]
+
+      session[:edit_title] = params[:post_title]
+      session[:edit_text] = params[:post_text]
+      redirect_to controller: :post, action: :edit, id: @id
+      
+    else
+
+      session[:title] = params[:post_title]
+      session[:text] = params[:post_text]
+      redirect_to('/post/new')
+    end
   end
 
   def create
@@ -30,7 +54,7 @@ class PostController < User::ApplicationController
         user_id: current_user.id,
         draft: "true"
       )
-      flash[:notice] = "下書きとして保存しました"
+      flash[:notice] = "下書きとして保存しました。自分のプロフィールの下書き欄を見てくださいね。"
 
       if session[:preview_title]
         session[:preview_title].clear
@@ -40,8 +64,16 @@ class PostController < User::ApplicationController
         session[:preview_text].clear
       end
 
+      if session[:title]
+        session[:title].clear
+      end
+
+      if session[:text]
+        session[:text].clear
+      end
+
       @post.save
-      redirect_to('/')
+      redirect_to('/profile')
 
     elsif post_params[:commit] == "投稿する"
       @post = Post.new(
@@ -60,6 +92,14 @@ class PostController < User::ApplicationController
         session[:preview_text].clear
       end
 
+       if session[:title]
+        session[:title].clear
+      end
+
+      if session[:text]
+        session[:text].clear
+      end
+
       @post.save
       redirect_to('/')
 
@@ -68,7 +108,7 @@ class PostController < User::ApplicationController
 
   def edit
     @post = Post.find_by(id: params[:id])
-    @postimages = PostImage.where(user_id: current_user.id).order(id: "DESC").last(10)
+    @postimages = PostImage.where(user_id: current_user.id).order(id: "DESC").first(10)
   end
 
   def preview
@@ -114,6 +154,14 @@ class PostController < User::ApplicationController
         session[:preview_text].clear
       end
 
+      if session[:edit_title] 
+        session[:edit_title].clear
+      end
+
+      if session[:edit_text]
+        session[:edit_text].clear
+      end
+
       @post.save
       redirect_to('/')
 
@@ -133,6 +181,14 @@ class PostController < User::ApplicationController
 
       if session[:preview_text]
         session[:preview_text].clear
+      end
+
+      if session[:title]
+        session[:title].clear
+      end
+
+      if session[:text]
+        session[:text].clear
       end
 
       @post.save

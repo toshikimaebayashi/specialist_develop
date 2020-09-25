@@ -1,10 +1,12 @@
 <div class="container">
 
 <div class="upload-box">
-<%= form_with url: "/post/postimage_upload", local: true, data: { persist: 'garlic' } do |f| %>
+<%= form_with id: 'image_form', url: "/post/postimage_upload", local: true do |f| %>
   <div class="contact-box">
     <span class="itemName">画像をアップロードする</span> 
     <%= f.file_field :imageurl %>
+    <%= f.hidden_field :post_title, :value => 0 %>
+    <%= f.hidden_field :post_text, :value => 0  %>
     <%= f.submit "保存する", class: "submitBtn" %>
   </div>
 <% end %> 
@@ -23,11 +25,12 @@
 </div>
 
 <div class="article-box">
-<%= form_with id: 'new_form', url: "/post/create", local: true, data: { persist: 'garlic' } do |f| %>
+<%= form_with id: 'new_form', url: "/post/create", local: true do |f| %>
   <p>タイトル</p> 
-  <%= f.text_field :title %> 
+  <%= f.text_field :title, :value => @postTitle %> 
   <p>ボディ</p>
-  <%= f.text_area :text, class: "materialize-textarea", id: "md-textarea" %>
+  <%= f.text_area :text, :value => @postText, id: "md-textarea" %> 
+  
   <span># 大見出し</span> <span>## 中見出し</span> <span>### 小見出し</span> <span>**太字**</span><span>画像：上の画像URLをコピーして貼り付け</span><span>改行、空行：半角スペース2つ、&lt;br&gt;</span>
   <p></p>
   <%= f.submit "プレビュー", class: "previewBtn", formtarget: "_blank", :data => { disable_with: false } %>
@@ -51,7 +54,7 @@
  <script>
  $("#new_form").submit(function(){
     if ($("input[name='title']").val() == '' 
-      || $("input[name='text']").val() == '' 
+      || $("textarea[name='text']").val() == '' 
        )
     {
       alert('必須項目を入力してください');
@@ -59,6 +62,20 @@
     } else {
       $("#new_form").submit();
     }
+  });
+ </script>
+
+  <script>
+ $("#image_form").submit(function(){
+
+   const selected = $("textarea[name='text']");
+   $("input[name='post_text']").val(selected.val()).change();
+
+   const selectedd = $("input[name='title']");
+   $("input[name='post_title']").val(selectedd.val()).change();
+
+   $("#image_form").submit();
+          
   });
  </script>
   
