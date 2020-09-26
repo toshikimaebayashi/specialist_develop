@@ -31,14 +31,29 @@
   <p>ボディ</p>
   <%= f.text_area :text, :value => @postText, id: "md-textarea" %> 
   
-  <span># 大見出し</span> <span>## 中見出し</span> <span>### 小見出し</span> <span>**太字**</span><span>画像：上の画像URLをコピーして貼り付け</span><span>改行、空行：半角スペース2つ、&lt;br&gt;</span>
+  <span># 大見出し</span> <span>## 中見出し</span> <span>### 小見出し</span> <span>**太字**</span><span>画像：上の画像URLをコピーして貼り付け</span><span>改行、空行：&lt;br&gt;</span>
   <p></p>
   <%= f.submit "プレビュー", class: "previewBtn", formtarget: "_blank", :data => { disable_with: false } %>
   <p></p>
   <%= f.submit "投稿する", class: "submitBtn" %>
   <%= f.submit "下書き保存", class: "draftBtn" %>
 <% end %> 
+
+<!--<div class="content">
+        <a class="js-modal-open" href="">実際どな感じで表示されるのか</a>
+    </div>
+    <div class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+        <div class="modal__content">
+            <p>入力画面</p>
+
+            <p>実際に表示される画面</p>
+
+            <a class="js-modal-close" href="">閉じる</a>
+        </div>
+    </div>
 </div>
+-->
 
 <script>
   function copyToClipboard(num) {   
